@@ -195,6 +195,7 @@
         var lowestLong;
         var highestLat;
         var lowestLat;
+        console.log(lowestLat);
         for (var i = data.length - 1; i >= 0; i--) {
           console.log(data[i]);
           if (data[i][0] > highestLong) {
@@ -245,8 +246,11 @@
         })
       }
 
-      function newLocation(newLong, newLat) {
+      function newLocation() {
+        var newLat = parseFloat(document.getElementById("newLatInput").value);
+        var newLong = parseFloat(document.getElementById("newLongInput").value);
         rawGeoPoints.push([newLong, newLat]);
+        console.log(rawGeoPoints);
       }
 
       function zoomToFit() {
