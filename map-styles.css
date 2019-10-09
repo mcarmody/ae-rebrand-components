@@ -21,11 +21,11 @@ body {
   text-align: center;
   color: #8223D2;
   font-size: 16px; }
-  .map-button-container .flyToButton {
+  .map-button-container .mapButton {
     cursor: pointer;
     border-radius: 100px;
     padding: 11px; }
-    .map-button-container .flyToButton:active {
+    .map-button-container .mapButton:active {
       background: #6C747B;
       color: white; }
   .map-button-container .directions {
