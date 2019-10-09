@@ -49,6 +49,15 @@
       <div class="map-button-container">
         <div class="viewAll mapButton" onClick = "zoomToFit()">View All POIs</div>
       </div>
+      <div class="map-button-container">
+        <div class="addLoc mapButton" onClick = "newLocation()">Add New POI</div>
+      </div>
+      <div class="map-text-input-container">
+        <input type="text" name="geoInput" placeholder="Latitude" id="newLatInput" class="geoInput">
+      </div>
+      <div class="map-text-input-container">
+        <input type="text" name="geoInput" placeholder="Longitude" id="newLongInput" class="geoInput">
+      </div>
     </div>  
 
     <script>
@@ -234,6 +243,10 @@
           ],
           zoom: 7
         })
+      }
+
+      function newLocation(newLong, newLat) {
+        rawGeoPoints.push([newLong, newLat]);
       }
 
       function zoomToFit() {

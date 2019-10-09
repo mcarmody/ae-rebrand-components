@@ -12,6 +12,34 @@ body {
 .map-controls {
   display: inline-block; }
 
+.map-text-input-container {
+  margin: 10px;
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  width: 100px; }
+  .map-text-input-container input {
+    margin: 10px;
+    display: block;
+    border: 1px solid black;
+    text-align: center;
+    color: black;
+    font-size: 16px;
+    padding: 8px;
+    text-align: left; }
+    .map-text-input-container input::-webkit-input-placeholder {
+      font-style: oblique; }
+    .map-text-input-container input:-ms-input-placeholder {
+      font-style: oblique; }
+    .map-text-input-container input::-ms-input-placeholder {
+      font-style: oblique; }
+    .map-text-input-container input::placeholder {
+      font-style: oblique; }
+    .map-text-input-container input:focus {
+      outline: none;
+      border-bottom: 4px solid black;
+      margin-bottom: -3px; }
+
 .map-button-container {
   margin: 10px;
   display: inline-block;
