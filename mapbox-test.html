@@ -21,20 +21,44 @@
 
     
     <div id='map' style='width: 800px; height: 600px;'></div>
-    <div class="styleSwitchButton" onclick = "darkStyle()">Dark Mode</div>
-    <div class="styleSwitchButton" onclick = "lightStyle()">Light Mode</div>
-    <br>
-    <div class="flyToButton" onClick = "flyToCoord()">Switch Location w/ Zoom In</div>
-    <div class="flyToButton" onClick = "flyToCoordWithZoom()">Switch Location w/ Zoom Out</div>
-    <br>
-    <div class="directions" onClick = "getRoute()">Directions</div>
+    <div class="map-controls">
+      <div class="map-button-container">
+        <input type="radio" name="modeSwitch" value="darkMode" id="darkModeButton" class="styleSwitchButton" onclick = "darkStyle(this)">
+        <label for="darkModeButton">Dark Mode
+          <div class="customButton">
+            <div class="interiorButton"></div>
+          </div>
+        </label>
+      </div>
+      <div class="map-button-container selected">
+        <input type="radio" name="modeSwitch" value="lightMode" id="lightModeButton" class="styleSwitchButton" onclick = "lightStyle(this)">
+        <label for="lightModeButton">Light Mode
+          <div class="customButton">
+            <div class="interiorButton"></div>
+          </div>
+        </label>
+      </div>
+      <br>
+      <div class="map-button-container">
+        <div class="flyToButton" onClick = "flyToCoord()">Zoom In Sterling</div>
+      </div>
+      <div class="map-button-container">
+        <div class="flyToButton" onClick = "flyToCoordWithZoom()">Zoom Out Nashville</div>
+      </div>
+      <br>
+      <div class="map-button-container">
+        <div class="directions" onClick = "getRoute()">Directions</div>
+      </div>  
+    </div>  
 
     <script>
       mapboxgl.accessToken = 'pk.eyJ1IjoibWFkY2FybW9keSIsImEiOiJjazE4MGJvY2IwYmV5M3BwaWNoaTVreGlsIn0.dHVhh-U4SQgDxUB0ShAWbg';
+      lightMapStyle = 'mapbox://styles/madcarmody/ck180lo7s012v1co308wz9u1m';
+      darkMapStyle = 'mapbox://styles/madcarmody/ck181zpvs02bo1cphsdgdzik7';
 
       var map = new mapboxgl.Map({
           container: 'map',
-          style: 'mapbox://styles/madcarmody/ck180lo7s012v1co308wz9u1m'
+          style: lightMapStyle
       });
 
       // initialize the map canvas to interact with later
@@ -134,12 +158,16 @@
       });
 
 
-      function lightStyle() {
-        map.setStyle('mapbox://styles/madcarmody/ck180lo7s012v1co308wz9u1m');
+      function lightStyle(self) {
+        map.setStyle(lightMapStyle);
+        self.parentElement.classList.add("selected");
+        document.getElementById("darkModeButton").parentElement.classList.remove("selected");
       }
 
-      function darkStyle() {
-        map.setStyle('mapbox://styles/madcarmody/ck181zpvs02bo1cphsdgdzik7');
+      function darkStyle(self) {
+        map.setStyle(darkMapStyle);
+        self.parentElement.classList.toggle("selected");
+        document.getElementById("lightModeButton").parentElement.classList.remove("selected");
       }
 
       function flyToCoord() {

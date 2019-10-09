@@ -1,0 +1,100 @@
+$asurion-purple: #8223D2;
+$dark-grey: #333F48;
+$light-grey: #6C747B;
+
+body {
+	font-family: "Apercu Pro", sans-serif
+}
+
+.mapboxgl-map {
+    border: 1px solid #8223d2;
+    border-radius: 20px;
+	display: inline-block;
+	float: left;
+	height: 600px;
+	width: 800px;
+}
+
+.map-controls {
+	display: inline-block;
+}
+
+.map-button-container {
+	margin: 10px;
+	display: inline-block;
+	border: 1px solid $asurion-purple;
+	height: 40px;
+	border-radius: 100px;
+	text-align: center;
+	color: $asurion-purple;
+	font-size: 16px;
+
+	.flyToButton {
+		cursor: pointer;
+		border-radius: 100px;
+		padding: 11px;
+
+		&:active {
+			background: $light-grey;
+			color: white;
+		};
+	}
+
+	.directions {
+		cursor: pointer;
+		border-radius: 100px;
+		padding: 11px;
+
+		&:active {
+			background: $light-grey;
+			color: white;
+		}
+	}
+
+	input {
+		position: absolute;
+		visibility: hidden;
+	}
+
+	label {
+		display: inline-block;
+		padding: 12px;
+		padding-left: 36px;
+		cursor: pointer;
+	}
+
+	.customButton {
+		position: relative;
+		display: block;
+		height: 20px;
+		width: 20px;
+		margin: 10px;
+		border: 1px solid $asurion-purple;
+		left: -36px;
+		top: -30px;
+		border-radius: 100px;
+
+		.interiorButton {
+			height: 14px;
+			width: 14px;
+			background: white;
+			margin: 2px;
+			border-radius: 100px;
+		}
+	}
+}
+
+.selected {
+	background: $asurion-purple;
+	color: white;
+
+	.customButton {
+		border: 1px solid $dark-grey;
+		background: white;
+
+		.interiorButton {
+			background: $light-grey;
+			border: 1px solid $dark-grey;
+		}
+	}
+}

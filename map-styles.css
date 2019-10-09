@@ -1,0 +1,71 @@
+body {
+  font-family: "Apercu Pro", sans-serif; }
+
+.mapboxgl-map {
+  border: 1px solid #8223d2;
+  border-radius: 20px;
+  display: inline-block;
+  float: left;
+  height: 600px;
+  width: 800px; }
+
+.map-controls {
+  display: inline-block; }
+
+.map-button-container {
+  margin: 10px;
+  display: inline-block;
+  border: 1px solid #8223D2;
+  height: 40px;
+  border-radius: 100px;
+  text-align: center;
+  color: #8223D2;
+  font-size: 16px; }
+  .map-button-container .flyToButton {
+    cursor: pointer;
+    border-radius: 100px;
+    padding: 11px; }
+    .map-button-container .flyToButton:active {
+      background: #6C747B;
+      color: white; }
+  .map-button-container .directions {
+    cursor: pointer;
+    border-radius: 100px;
+    padding: 11px; }
+    .map-button-container .directions:active {
+      background: #6C747B;
+      color: white; }
+  .map-button-container input {
+    position: absolute;
+    visibility: hidden; }
+  .map-button-container label {
+    display: inline-block;
+    padding: 12px;
+    padding-left: 36px;
+    cursor: pointer; }
+  .map-button-container .customButton {
+    position: relative;
+    display: block;
+    height: 20px;
+    width: 20px;
+    margin: 10px;
+    border: 1px solid #8223D2;
+    left: -36px;
+    top: -30px;
+    border-radius: 100px; }
+    .map-button-container .customButton .interiorButton {
+      height: 14px;
+      width: 14px;
+      background: white;
+      margin: 2px;
+      border-radius: 100px; }
+
+.selected {
+  background: #8223D2;
+  color: white; }
+  .selected .customButton {
+    border: 1px solid #333F48;
+    background: white; }
+    .selected .customButton .interiorButton {
+      background: #6C747B;
+      border: 1px solid #333F48; }
