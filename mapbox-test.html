@@ -22,6 +22,7 @@
     
     <div id='map'></div>
     <div class="map-controls">
+      <div class="testing" onClick = "parseGeoData(rawGeoPoints)">PARSE TEST</div>
       <div class="map-button-container">
         <input type="radio" name="modeSwitch" value="darkMode" id="darkModeButton" class="styleSwitchButton" onclick = "darkStyle(this)">
         <label for="darkModeButton">Dark Mode
@@ -59,10 +60,10 @@
         <div class="addLoc mapButton" onClick = "newLocation()">Add New POI</div>
       </div>
       <div class="map-text-input-container">
-        <input type="text" name="geoInput" placeholder="Longitude" id="newLatInput" class="geoInput">
+        <input type="text" name="geoInput" placeholder="Latitude" id="newLatInput" class="geoInput">
       </div>
       <div class="map-text-input-container">
-        <input type="text" name="geoInput" placeholder="Latitude" id="newLongInput" class="geoInput">
+        <input type="text" name="geoInput" placeholder="Longitude" id="newLongInput" class="geoInput">
       </div>
     </div>  
 
@@ -206,38 +207,33 @@
       }
 
       function parseGeoData(data){
-        var highestLong;
-        var lowestLong;
-        var highestLat;
-        var lowestLat;
-        console.log(lowestLat);
+        var highestLong = -90;
+        var lowestLong = 90;
+        var highestLat = -180;
+        var lowestLat = 180;
+        console.log(data)
         for (var i = data.length - 1; i >= 0; i--) {
           console.log(data[i]);
-          if (data[i][0] > highestLong) {
-            highestLong = data[i][0];
-            console.log("New furthest North point: "+data[i][0]);
-          } else if (data[i][0] < lowestLong) {
-            lowestLong = data[i][0];
-            console.log("New furthest South point: "+data[i][0]);
-          } else {
-            highestLong = data[i][0];
-            lowestLong = data[i][0];
-          }
 
-          if (data[i][1] > highestLat) {
-            highestLat = data[i][1];
-            console.log("New furthest East point: "+data[i][1]);
-          } else if (data[i][1] < lowestLat) {
-            lowestLat = data[i][1];
-            console.log("New furthest West point: "+data[i][1]);
-          } else {
-            highestLat = data[i][1];
-            lowestLat = data[i][1];
+          if (data[i][0] > highestLat) {
+            highestLat = data[i][0];
+            console.log("New furthest East point: "+data[i][0]);
+          }
+          if (data[i][0] < lowestLat) {
+            lowestLat = data[i][0];
+            console.log("New furthest West point: "+data[i][0]);
+          } 
+
+          if (data[i][1] > highestLong) {
+            highestLong = data[i][1];
+            console.log("New furthest North point: "+data[i][1]);
+          }
+          if (data[i][1] < lowestLong) {
+            lowestLong = data[i][1];
+            console.log("New furthest South point: "+data[i][1]);
           }
         }
-
-        console.log("NE Point: ["+highestLong+","+highestLat+"]");
-        geoBounds = [[highestLong, highestLat], [lowestLong, lowestLat]];
+        geoBounds = [[highestLat, highestLong], [lowestLat, lowestLong]];
         console.log(geoBounds)
       }
 
@@ -264,9 +260,9 @@
       function newLocation() {
         var newLat = parseFloat(document.getElementById("newLatInput").value);
         var newLong = parseFloat(document.getElementById("newLongInput").value);
-        rawGeoPoints.push([newLong, newLat]);
+        rawGeoPoints.push([newLat, newLong]);
         map.flyTo({
-          center: [newLong, newLat], zoom: 10
+          center: [newLat, newLong], zoom: 10
         })
         map.addLayer({
           id: 'point',
