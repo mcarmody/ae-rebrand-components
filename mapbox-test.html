@@ -38,6 +38,12 @@
           </div>
         </label>
       </div>
+      <!-- Rounded switch -->
+      <label class="switch">
+        <div class="buttonLabel">Dark Mode</div>
+        <input type="checkbox" id="styleToggleButtoon" onclick = "toggleStyle(this)">
+        <span class="slider round"></span>
+      </label>
       <br>
       <div class="map-button-container">
         <div class="flyToButton mapButton" onClick = "flyToCoord()">Zoom In Sterling</div>
@@ -53,10 +59,10 @@
         <div class="addLoc mapButton" onClick = "newLocation()">Add New POI</div>
       </div>
       <div class="map-text-input-container">
-        <input type="text" name="geoInput" placeholder="Latitude" id="newLatInput" class="geoInput">
+        <input type="text" name="geoInput" placeholder="Longitude" id="newLatInput" class="geoInput">
       </div>
       <div class="map-text-input-container">
-        <input type="text" name="geoInput" placeholder="Longitude" id="newLongInput" class="geoInput">
+        <input type="text" name="geoInput" placeholder="Latitude" id="newLongInput" class="geoInput">
       </div>
     </div>  
 
@@ -190,6 +196,15 @@
         document.getElementById("lightModeButton").parentElement.classList.remove("selected");
       }
 
+      function toggleStyle(self) {
+        console.log(self.checked)
+        if (self.checked) {
+          darkStyle(document.getElementById("darkModeButton"))
+        } else {
+          lightStyle(document.getElementById("lightModeButton"))
+        }
+      }
+
       function parseGeoData(data){
         var highestLong;
         var lowestLong;
@@ -250,6 +265,32 @@
         var newLat = parseFloat(document.getElementById("newLatInput").value);
         var newLong = parseFloat(document.getElementById("newLongInput").value);
         rawGeoPoints.push([newLong, newLat]);
+        map.flyTo({
+          center: [newLong, newLat], zoom: 10
+        })
+        map.addLayer({
+          id: 'point',
+          type: 'circle',
+          source: {
+            type: 'geojson',
+            data: {
+              type: 'FeatureCollection',
+              features: [{
+                type: 'Feature',
+                properties: {},
+                geometry: {
+                  type: 'Point',
+                  coordinates: [newLong, newLat]
+                }
+              }
+              ]
+            }
+          },
+          paint: {
+            'circle-radius': 10,
+            'circle-color': '#3887be'
+          }
+        });
         console.log(rawGeoPoints);
       }
 
@@ -262,9 +303,9 @@
         drawPOIs();
       }
 
-      map.addControl(new MapboxDirections({
-        accessToken: mapboxgl.accessToken
-      }), 'top-left');
+      // map.addControl(new MapboxDirections({
+      //   accessToken: mapboxgl.accessToken
+      // }), 'top-left');
     </script>
 
 
