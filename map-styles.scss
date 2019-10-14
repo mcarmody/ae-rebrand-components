@@ -200,6 +200,18 @@ input:checked + .slider:before {
 	display: none;
 }
 
+.mapbox-directions-origin .mapbox-form-label {
+	background-color: #A5C300;
+}
+
+.mapbox-directions-destination .mapbox-form-label {
+	background-color: $light-grey;
+}
+
+.mapbox-directions-profile {
+	display: none;
+}
+
 .mapboxgl-ctrl-group {
 
 	&:not(:empty) {
