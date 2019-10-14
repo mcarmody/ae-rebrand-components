@@ -158,3 +158,12 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%; }
+
+/*hide the mapbox copyright stuff*/
+.mapboxgl-ctrl-bottom-right {
+  display: none; }
+
+.mapboxgl-ctrl-group:not(:empty) {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid rgba(130, 35, 210, 0.3); }
