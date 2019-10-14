@@ -167,3 +167,8 @@ input:checked + .slider:before {
   -webkit-box-shadow: none;
   box-shadow: none;
   border: 1px solid rgba(130, 35, 210, 0.3); }
+
+.mapboxgl-user-location-dot {
+  background-color: #8223D2; }
+  .mapboxgl-user-location-dot::before {
+    background-color: #8223D2; }

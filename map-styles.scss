@@ -204,3 +204,11 @@ input:checked + .slider:before {
 	box-shadow: none;
 	border: 1px solid transparentize($asurion-purple, .7);
 }
+
+.mapboxgl-user-location-dot {
+	background-color: $asurion-purple;
+
+	&::before {
+		background-color: $asurion-purple;
+	}
+}
